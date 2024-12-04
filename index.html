@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        div {
+            text-align: center;
+            font-size: 45px;
+            font-weight: bold;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            width: 300px;
+            height: 80px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: gray;
+            color: black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Digital_clock">
+        <span id="hours">00</span>
+        <span>:</span>
+        <span id="minutes">00:</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+        <span id="am_pm">AM</span>
+    </div>
+    <script>
+        function updateClock() {
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let ampm = document.getElementById("am_pm")
+
+            if(hours>=12){
+                ampm.innerHTML="PM"
+            }
+            else{
+                ampm.innerHTML="AM"
+            }
+
+            if(hours>12)
+            {
+                hours=hours-12
+            }
+            if(hours<10){
+                hours="0"+hours
+            }
+            if(minutes<10){
+                minutes="0"+minutes
+            }
+            if(seconds<10){
+                seconds="0"+seconds
+            }
+
+            document.getElementById("hours").innerHTML=hours;
+            document.getElementById("minutes").innerHTML=minutes;
+            document.getElementById("seconds").innerHTML=seconds;
+
+           
+        }
+
+        setInterval(updateClock, 1000); // Update every second
+        updateClock()
+    </script>
+</body>
+</html>
